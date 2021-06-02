@@ -1,5 +1,6 @@
 package com.planning.planning.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -11,10 +12,13 @@ public class Phase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String titre;
     private String objectif;
     private String rendu;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date startTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date endTime;
 
     @ManyToOne

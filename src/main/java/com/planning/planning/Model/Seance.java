@@ -1,5 +1,8 @@
 package com.planning.planning.Model;
 
+
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -16,15 +19,24 @@ public class Seance {
     private String sujet;
     private String objectif;
     private String aller;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date startTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date endTime;
     private String creneau;
 
     @OneToMany(mappedBy = "seance")
     private Set<Phase> phases;
 
+    @ManyToOne
+    @JoinColumn(nullable = true)
+    @JsonIgnore
+    private Planning planning;
+
     public Seance() {
     }
+
+
 
     public Seance(List<Phase> phases, String sujet, String objectif,
                   String aller, Date startTime, Date endTime, String creneau) {
@@ -98,5 +110,13 @@ public class Seance {
 
     public void setPhases(Set<Phase> phases) {
         this.phases = phases;
+    }
+
+    public Planning getPlannig() {
+        return planning;
+    }
+
+    public void setPlannig(Planning planning) {
+        this.planning = planning;
     }
 }
