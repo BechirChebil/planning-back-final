@@ -1,12 +1,13 @@
 package com.planning.planning.Model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.Duration;
 
+@Entity
 public class Activite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,10 +1,11 @@
 package com.planning.planning.service.Activite;
 
 import com.planning.planning.Model.Activite;
-import com.planning.planning.Model.Planning;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface IActiviteService {
 
    Activite addActivite(Activite activite);
