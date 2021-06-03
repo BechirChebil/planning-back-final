@@ -15,10 +15,16 @@ public class Seance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String sujet;
     private String objectif;
+
     private String aller;
+    private String retour;
+    @JsonFormat(pattern="HH:mm")
+    private Date startTimeRetour;
+    @JsonFormat(pattern="HH:mm")
+    private Date endTimeRetour;
+
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date startTime;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
@@ -39,10 +45,14 @@ public class Seance {
 
 
     public Seance(List<Phase> phases, String sujet, String objectif,
-                  String aller, Date startTime, Date endTime, String creneau) {
+                  String aller, String retour, Date startTimeRetour, Date endTimeRetour,
+                  Date startTime, Date endTime, String creneau) {
         this.sujet = sujet;
         this.objectif = objectif;
         this.aller = aller;
+        this.retour = retour;
+        this.startTimeRetour = startTimeRetour;
+        this.endTimeRetour = endTimeRetour;
         this.startTime = startTime;
         this.endTime = endTime;
         this.creneau = creneau;
@@ -118,5 +128,29 @@ public class Seance {
 
     public void setPlannig(Planning planning) {
         this.planning = planning;
+    }
+
+    public String getRetour() {
+        return retour;
+    }
+
+    public void setRetour(String retour) {
+        this.retour = retour;
+    }
+
+    public Date getStartTimeRetour() {
+        return startTimeRetour;
+    }
+
+    public void setStartTimeRetour(Date startTimeRetour) {
+        this.startTimeRetour = startTimeRetour;
+    }
+
+    public Date getEndTimeRetour() {
+        return endTimeRetour;
+    }
+
+    public void setEndTimeRetour(Date endTimeRetour) {
+        this.endTimeRetour = endTimeRetour;
     }
 }

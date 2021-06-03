@@ -5,6 +5,7 @@ import com.planning.planning.repositories.Plannig.IPlanningRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlanningService implements IPlanningService{
@@ -29,16 +30,18 @@ public class PlanningService implements IPlanningService{
 
     @Override
     public Planning getPlanning(Long planningId) {
-        return null;
+        Optional<Planning> planning = planningRepository.findById(planningId);
+        return planning.orElse(null);
     }
 
     @Override
     public List<Planning> getPlannings() {
-        return null;
+        return (List<Planning>) planningRepository.findAll();
     }
 
     @Override
     public void deletePlanning(Long planningId) {
-
+        Optional<Planning> planning = planningRepository.findById(planningId);
+        planning.ifPresent(value->planningRepository.delete(value));
     }
 }
