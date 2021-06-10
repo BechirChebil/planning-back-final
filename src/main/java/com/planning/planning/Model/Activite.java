@@ -1,10 +1,7 @@
 package com.planning.planning.Model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Duration;
 
 @Entity
@@ -14,20 +11,26 @@ public class Activite {
     private Long id;
     private String titre;
     private String description;
-    private String resources;
-    private String indications;
     private Duration duration;
+
+
+
+    @OneToOne(mappedBy = "activite")
+    private CahierEtudiant cahierEtudiant;
+
+    @OneToOne(mappedBy = "activite")
+    private CahierTuteur cahierTuteur;
 
     public Activite() {
     }
 
-    public Activite(String titre, String description, String resources, String indications, Duration duration) {
+    public Activite(String titre, String description, Duration duration, CahierEtudiant cahierEtudiant, CahierTuteur cahierTuteur) {
 
         this.titre = titre;
         this.description = description;
-        this.resources = resources;
-        this.indications = indications;
         this.duration = duration;
+        this.cahierEtudiant = cahierEtudiant;
+        this.cahierTuteur = cahierTuteur;
     }
 
     public Long getId() {
@@ -54,22 +57,6 @@ public class Activite {
         this.description = description;
     }
 
-    public String getResources() {
-        return resources;
-    }
-
-    public void setResources(String resources) {
-        this.resources = resources;
-    }
-
-    public String getIndications() {
-        return indications;
-    }
-
-    public void setIndications(String indications) {
-        this.indications = indications;
-    }
-
     public Duration getDuration() {
         return duration;
     }
@@ -77,4 +64,22 @@ public class Activite {
     public void setDuration(Duration duration) {
         this.duration = duration;
     }
+
+    public CahierEtudiant getCahierEtudiant() {
+        return cahierEtudiant;
+    }
+
+    public void setCahierEtudiant(CahierEtudiant cahierEtudiant) {
+        this.cahierEtudiant = cahierEtudiant;
+    }
+
+    public CahierTuteur getCahierTuteur() {
+        return cahierTuteur;
+    }
+
+    public void setCahierTuteur(CahierTuteur cahierTuteur) {
+        this.cahierTuteur = cahierTuteur;
+    }
+
+
 }

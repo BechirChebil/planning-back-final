@@ -25,10 +25,8 @@ public class Seance {
     @JsonFormat(pattern="HH:mm")
     private Date endTimeRetour;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    private Date startTime;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    private Date endTime;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date date;
     private String creneau;
 
     @OneToMany(mappedBy = "seance")
@@ -46,15 +44,14 @@ public class Seance {
 
     public Seance(List<Phase> phases, String sujet, String objectif,
                   String aller, String retour, Date startTimeRetour, Date endTimeRetour,
-                  Date startTime, Date endTime, String creneau) {
+                  Date date, String creneau) {
         this.sujet = sujet;
         this.objectif = objectif;
         this.aller = aller;
         this.retour = retour;
         this.startTimeRetour = startTimeRetour;
         this.endTimeRetour = endTimeRetour;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.date = date;
         this.creneau = creneau;
     }
 
@@ -90,20 +87,12 @@ public class Seance {
         this.aller = aller;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public Date getDate() {
+        return date;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getCreneau() {

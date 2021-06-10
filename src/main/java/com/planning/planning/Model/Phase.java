@@ -16,6 +16,7 @@ public class Phase {
     private String titre;
     private String objectif;
     private String rendu;
+
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date startTime;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
