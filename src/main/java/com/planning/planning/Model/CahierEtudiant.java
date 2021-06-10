@@ -8,21 +8,22 @@ public class CahierEtudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String resourcesEtudiant;
-    private String indicationsEtudiant;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "planning_id", referencedColumnName = "id")
+    private Planning planning;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "activite_id", referencedColumnName = "id")
     private Activite activite;
 
+
+
     public CahierEtudiant() {
     }
 
-    public CahierEtudiant(String resourcesEtudiant, String indicationsEtudiant, Activite activite) {
-        this.resourcesEtudiant = resourcesEtudiant;
-        this.indicationsEtudiant = indicationsEtudiant;
+    public CahierEtudiant(Planning planning, Activite activite) {
+        this.planning = planning;
         this.activite = activite;
     }
 
@@ -34,20 +35,12 @@ public class CahierEtudiant {
         this.id = id;
     }
 
-    public String getResourcesEtudiant() {
-        return resourcesEtudiant;
+    public Planning getPlanning() {
+        return planning;
     }
 
-    public void setResourcesEtudiant(String resourcesEtudiant) {
-        this.resourcesEtudiant = resourcesEtudiant;
-    }
-
-    public String getIndicationsEtudiant() {
-        return indicationsEtudiant;
-    }
-
-    public void setIndicationsEtudiant(String indicationsEtudiant) {
-        this.indicationsEtudiant = indicationsEtudiant;
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
     }
 
     public Activite getActivite() {

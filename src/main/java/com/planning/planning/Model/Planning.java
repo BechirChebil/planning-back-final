@@ -19,13 +19,38 @@ public class Planning {
     @OneToMany(mappedBy = "planning")
     private Set<Seance> seances;
 
+    @OneToOne(mappedBy = "planning")
+    private CahierEtudiant cahierEtudiant;
+
+    @OneToOne(mappedBy = "planning")
+    private CahierTuteur cahierTuteur;
+
     public Planning() {
     }
 
-    public Planning(String sujet, Date startTime, Set<Seance> seances) {
+    public Planning(String sujet, Date startTime, Set<Seance> seances,
+                    CahierEtudiant cahierEtudiant, CahierTuteur cahierTuteur) {
         this.sujet = sujet;
         this.startTime = startTime;
         this.seances = seances;
+        this.cahierEtudiant = cahierEtudiant;
+        this.cahierTuteur = cahierTuteur;
+    }
+
+    public CahierEtudiant getCahierEtudiant() {
+        return cahierEtudiant;
+    }
+
+    public void setCahierEtudiant(CahierEtudiant cahierEtudiant) {
+        this.cahierEtudiant = cahierEtudiant;
+    }
+
+    public CahierTuteur getCahierTuteur() {
+        return cahierTuteur;
+    }
+
+    public void setCahierTuteur(CahierTuteur cahierTuteur) {
+        this.cahierTuteur = cahierTuteur;
     }
 
     public Long getId() {

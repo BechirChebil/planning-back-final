@@ -11,17 +11,23 @@ public class CahierTuteur {
     private String indicationsTuteur;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "planning_id", referencedColumnName = "id")
+    private Planning planning;
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "activite_id", referencedColumnName = "id")
     private Activite activite;
 
     public CahierTuteur() {
     }
 
-    public CahierTuteur(String resourcesTuteur, String indicationsTuteur, Activite activite) {
+    public CahierTuteur(String resourcesTuteur, String indicationsTuteur, Planning planning, Activite activite) {
         this.resourcesTuteur = resourcesTuteur;
         this.indicationsTuteur = indicationsTuteur;
+        this.planning = planning;
         this.activite = activite;
     }
+
 
     public Long getId() {
         return id;
@@ -29,6 +35,14 @@ public class CahierTuteur {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Planning getPlanning() {
+        return planning;
+    }
+
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
     }
 
     public String getResourcesTuteur() {
@@ -54,4 +68,6 @@ public class CahierTuteur {
     public void setActivite(Activite activite) {
         this.activite = activite;
     }
+
+
 }
