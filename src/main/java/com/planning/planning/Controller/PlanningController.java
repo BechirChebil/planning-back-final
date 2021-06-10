@@ -1,7 +1,6 @@
 package com.planning.planning.Controller;
 
 import com.planning.planning.Model.Planning;
-import com.planning.planning.Model.Seance;
 import com.planning.planning.service.Planning.IPlanningService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,5 @@
 package com.planning.planning.Model;
 
-import com.planning.planning.Model.*;
 import javax.persistence.*;
 
 @Entity
@@ -10,11 +9,11 @@ public class CahierEtudiant {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "planning_id", referencedColumnName = "id")
+    //@JoinColumn(name = "id", referencedColumnName = "id")
     private Planning planning;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "activite_id", referencedColumnName = "id")
+    //@JoinColumn(name = "activite_id", referencedColumnName = "id")
     private Activite activite;
 
 
