@@ -19,7 +19,7 @@ public class Phase {
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date startTime;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern="HH:mm")
     private Date endTime;
 
     @ManyToOne

@@ -53,7 +53,7 @@ public class Seance {
 
 
 
-    public Seance(List<Phase> phases, String sujet, String objectif,
+    public Seance(String sujet, String objectif,
                   String aller, String retour, Date startTimeRetour, Date endTimeRetour,
                   Date date, String creneau) {
         this.sujet = sujet;
@@ -64,6 +64,22 @@ public class Seance {
         this.endTimeRetour = endTimeRetour;
         this.date = date;
         this.creneau = creneau;
+    }
+
+    public List<Phase> getPhases() {
+        return phases;
+    }
+
+    public void setPhases(List<Phase> phases) {
+        this.phases = phases;
+    }
+
+    public Planning getPlanning() {
+        return planning;
+    }
+
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
     }
 
     public Long getId() {

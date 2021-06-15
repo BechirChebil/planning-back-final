@@ -21,11 +21,9 @@ public class CahierTuteur {
     public CahierTuteur() {
     }
 
-    public CahierTuteur(String resourcesTuteur, String indicationsTuteur, Planning planning, Activite activite) {
+    public CahierTuteur(String resourcesTuteur, String indicationsTuteur) {
         this.resourcesTuteur = resourcesTuteur;
         this.indicationsTuteur = indicationsTuteur;
-        this.planning = planning;
-        this.activite = activite;
     }
 
 

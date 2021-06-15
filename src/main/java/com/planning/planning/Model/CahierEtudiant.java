@@ -21,10 +21,7 @@ public class CahierEtudiant {
     public CahierEtudiant() {
     }
 
-    public CahierEtudiant(Planning planning, Activite activite) {
-        this.planning = planning;
-        this.activite = activite;
-    }
+
 
     public Long getId() {
         return id;
