@@ -15,22 +15,17 @@ public class Activite {
 
 
 
-    @OneToOne(mappedBy = "activite")
-    private CahierEtudiant cahierEtudiant;
 
-    @OneToOne(mappedBy = "activite")
-    private CahierTuteur cahierTuteur;
 
     public Activite() {
     }
 
-    public Activite(String titre, String description, Duration duration, CahierEtudiant cahierEtudiant, CahierTuteur cahierTuteur) {
+    public Activite(String titre, String description, Duration duration) {
 
         this.titre = titre;
         this.description = description;
         this.duration = duration;
-        this.cahierEtudiant = cahierEtudiant;
-        this.cahierTuteur = cahierTuteur;
+
     }
 
     public Long getId() {
@@ -65,21 +60,6 @@ public class Activite {
         this.duration = duration;
     }
 
-    public CahierEtudiant getCahierEtudiant() {
-        return cahierEtudiant;
-    }
-
-    public void setCahierEtudiant(CahierEtudiant cahierEtudiant) {
-        this.cahierEtudiant = cahierEtudiant;
-    }
-
-    public CahierTuteur getCahierTuteur() {
-        return cahierTuteur;
-    }
-
-    public void setCahierTuteur(CahierTuteur cahierTuteur) {
-        this.cahierTuteur = cahierTuteur;
-    }
 
 
 }

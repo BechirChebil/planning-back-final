@@ -20,6 +20,7 @@ public class Seance {
 
     private String aller;
     private String retour;
+
     @JsonFormat(pattern="HH:mm")
     private Date startTimeRetour;
     @JsonFormat(pattern="HH:mm")
@@ -27,15 +28,25 @@ public class Seance {
 
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
+
     private String creneau;
 
-    @OneToMany(mappedBy = "seance")
-    private Set<Phase> phases;
+
+    @OneToMany(mappedBy="seance")
+    private List<Phase> phases;
+
+//    @OneToMany(mappedBy = "seance")
+//    private Set<Phase> phases;
+
+
 
     @ManyToOne
-    @JoinColumn(nullable = true)
-    @JsonIgnore
     private Planning planning;
+
+//    @ManyToOne
+//    @JoinColumn(nullable = true)
+//    @JsonIgnore
+//    private Planning planning;
 
     public Seance() {
     }
@@ -103,13 +114,6 @@ public class Seance {
         this.creneau = creneau;
     }
 
-    public Set<Phase> getPhases() {
-        return phases;
-    }
-
-    public void setPhases(Set<Phase> phases) {
-        this.phases = phases;
-    }
 
     public Planning getPlannig() {
         return planning;

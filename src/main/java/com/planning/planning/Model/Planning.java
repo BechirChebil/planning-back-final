@@ -3,7 +3,9 @@ package com.planning.planning.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,41 +18,23 @@ public class Planning {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startTime;
 
-    @OneToMany(mappedBy = "planning")
-    private Set<Seance> seances;
+//    @OneToMany( targetEntity=Seance.class, mappedBy="planning" )
+//    private List<Seance> seances = new ArrayList<>();
 
-    @OneToOne(mappedBy = "planning")
-    private CahierEtudiant cahierEtudiant;
+    @OneToMany(mappedBy="planning")
+    private List<Seance> seances;
 
-    @OneToOne(mappedBy = "planning")
-    private CahierTuteur cahierTuteur;
+//    @OneToMany(mappedBy = "planning")
+//    private List<Seance> seances;
+
+
 
     public Planning() {
     }
 
-    public Planning(String sujet, Date startTime, Set<Seance> seances,
-                    CahierEtudiant cahierEtudiant, CahierTuteur cahierTuteur) {
+    public Planning(String sujet, Date startTime) {
         this.sujet = sujet;
         this.startTime = startTime;
-        this.seances = seances;
-        this.cahierEtudiant = cahierEtudiant;
-        this.cahierTuteur = cahierTuteur;
-    }
-
-    public CahierEtudiant getCahierEtudiant() {
-        return cahierEtudiant;
-    }
-
-    public void setCahierEtudiant(CahierEtudiant cahierEtudiant) {
-        this.cahierEtudiant = cahierEtudiant;
-    }
-
-    public CahierTuteur getCahierTuteur() {
-        return cahierTuteur;
-    }
-
-    public void setCahierTuteur(CahierTuteur cahierTuteur) {
-        this.cahierTuteur = cahierTuteur;
     }
 
     public Long getId() {
@@ -77,11 +61,12 @@ public class Planning {
         this.startTime = startTime;
     }
 
-    public Set<Seance> getSeances() {
+    public List<Seance> getSeances() {
         return seances;
     }
 
-    public void setSeances(Set<Seance> seances) {
+    public void setSeances(List<Seance> seances) {
         this.seances = seances;
     }
+
 }

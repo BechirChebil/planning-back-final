@@ -8,11 +8,11 @@ public class CahierEtudiant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     //@JoinColumn(name = "id", referencedColumnName = "id")
     private Planning planning;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     //@JoinColumn(name = "activite_id", referencedColumnName = "id")
     private Activite activite;
 

@@ -23,9 +23,12 @@ public class Phase {
     private Date endTime;
 
     @ManyToOne
-    @JoinColumn(nullable = true)
-    @JsonIgnore
     private Seance seance;
+
+//    @ManyToOne
+//    @JoinColumn(nullable = true)
+//    @JsonIgnore
+//    private Seance seance;
 
     public Phase() {
     }

@@ -10,12 +10,12 @@ public class CahierTuteur {
     private String resourcesTuteur;
     private String indicationsTuteur;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "planning_id", referencedColumnName = "id")
+    @OneToOne
+    //@JoinColumn(name = "id", referencedColumnName = "id")
     private Planning planning;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "activite_id", referencedColumnName = "id")
+    @OneToOne
+    //@JoinColumn(name = "activite_id", referencedColumnName = "id")
     private Activite activite;
 
     public CahierTuteur() {
