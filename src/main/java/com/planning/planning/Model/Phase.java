@@ -23,6 +23,7 @@ public class Phase {
     private Date endTime;
 
     @ManyToOne
+    @JsonIgnore
     private Seance seance;
 
 //    @ManyToOne

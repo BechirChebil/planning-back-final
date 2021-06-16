@@ -2,15 +2,21 @@ package com.planning.planning.Controller;
 
 import com.planning.planning.Model.Phase;
 import com.planning.planning.service.Phase.IPhaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000/")
+
+//@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 public class PhaseController {
+    @Autowired
     IPhaseService phaseService;
+   // @CrossOrigin(origins = "http://localhost:3000/")
+
 
     public PhaseController(IPhaseService phaseService) {
         this.phaseService = phaseService;
@@ -42,10 +48,25 @@ public class PhaseController {
         return new ResponseEntity<>(phase, responseStatus);
     }
 
+//    @GetMapping("/phases/")
+//    public ResponseEntity<?> getPhases() {
+//        return new ResponseEntity<>(phaseService.getPhases(), HttpStatus.OK);
+//    }
+//
+//    public List<Phase> getPhases();
+
     @GetMapping("/phases")
-    public ResponseEntity<?> getPhases() {
-        return new ResponseEntity<>(phaseService.getPhases(), HttpStatus.OK);
+    @ResponseBody
+        public List<Phase> getPhases() {
+        List<Phase> list = phaseService.getPhases();
+        return list;
     }
+
+//    //Produits
+//    @GetMapping(value = "/phases/")
+//    public List<Phase> listePhases() {
+//        return phaseService.getPhases();
+//    }
 
     @DeleteMapping("/phase/{id}")
     public ResponseEntity<?> deletePhase(@PathVariable Long id) {
