@@ -10,38 +10,49 @@ import java.util.Optional;
 @Service
 public class PlanningService implements IPlanningService{
 
-    IPlanningRepository planningRepository;
+    IPlanningRepository IPlanningRepository;
 
     public PlanningService(IPlanningRepository planningRepository){
-        this.planningRepository = planningRepository;
+        this.IPlanningRepository = planningRepository;
     }
 
     @Override
     public Planning addPlanning(Planning planning) {
-        planningRepository.save(planning);
+        IPlanningRepository.save(planning);
         return planning;
     }
 
     @Override
     public Planning updatePlanning(Planning planningToUpdate, Planning planning) {
-        planningRepository.save(planning);
-        return planning;
+
+        planningToUpdate.setSujet(planning.getSujet() != null ? planning.getSujet() : planningToUpdate.getSujet());
+       // planningToUpdate.setStartTime(planning.getObjectif() != null ? planning.getObjectif() : planningToUpdate.getObjectif());
+        //planningToUpdate.setRendu(planning.getRendu() != null ? planning.getRendu() : planningToUpdate.getRendu());
+        planningToUpdate.setStartTime(planning.getStartTime() != null ? planning.getStartTime() : planningToUpdate.getStartTime());
+        //planningToUpdate.setSeances(planning.getSeances()  != null ? planning.getSeances() : planningToUpdate.getSeances());
+
+        if (planning.getSeances() != null) {
+            planningToUpdate.setSeances(planning.getSeances());
+        }
+
+        IPlanningRepository.save(planningToUpdate);
+        return planningToUpdate;
     }
 
     @Override
     public Planning getPlanning(Long planningId) {
-        Optional<Planning> planning = planningRepository.findById(planningId);
+        Optional<Planning> planning = IPlanningRepository.findById(planningId);
         return planning.orElse(null);
     }
 
     @Override
     public List<Planning> getPlannings() {
-        return (List<Planning>) planningRepository.findAll();
+        return (List<Planning>) IPlanningRepository.findAll();
     }
 
     @Override
     public void deletePlanning(Long planningId) {
-        Optional<Planning> planning = planningRepository.findById(planningId);
-        planning.ifPresent(value->planningRepository.delete(value));
+        Optional<Planning> planning = IPlanningRepository.findById(planningId);
+        planning.ifPresent(value->IPlanningRepository.delete(value));
     }
 }

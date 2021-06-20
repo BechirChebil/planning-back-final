@@ -24,8 +24,13 @@ public class ActiviteService implements IActiviteService {
 
     @Override
     public Activite updateActivite(Activite activiteToUpdate, Activite activite) {
-        activityRepository.save(activite);
-        return activite;
+
+        activiteToUpdate.setTitre(activite.getTitre() != null ? activite.getTitre() : activiteToUpdate.getTitre());
+        activiteToUpdate.setDescription(activite.getDescription() != null ? activite.getDescription() : activiteToUpdate.getDescription());
+        activiteToUpdate.setDuration(activite.getDuration() != null ? activite.getDuration() : activiteToUpdate.getDuration());
+
+        activityRepository.save(activiteToUpdate);
+        return activiteToUpdate;
     }
 
     @Override

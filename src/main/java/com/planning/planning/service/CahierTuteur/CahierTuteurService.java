@@ -24,8 +24,13 @@ public class CahierTuteurService implements ICahierTuteurService{
 
     @Override
     public CahierTuteur updateCahierTuteur(CahierTuteur cahierTuteurToUpdate, CahierTuteur cahierTuteur) {
-        cahierTuteurRepository.save(cahierTuteur);
-        return cahierTuteur;
+        cahierTuteurToUpdate.setResourcesTuteur(cahierTuteur.getResourcesTuteur() != null ? cahierTuteur.getResourcesTuteur() : cahierTuteurToUpdate.getResourcesTuteur());
+        cahierTuteurToUpdate.setIndicationsTuteur(cahierTuteur.getIndicationsTuteur() != null ? cahierTuteur.getIndicationsTuteur() : cahierTuteurToUpdate.getIndicationsTuteur());
+        cahierTuteurToUpdate.setPlanning(cahierTuteur.getPlanning() != null ? cahierTuteur.getPlanning() : cahierTuteurToUpdate.getPlanning());
+        cahierTuteurToUpdate.setActivite(cahierTuteur.getActivite() != null ? cahierTuteur.getActivite() : cahierTuteurToUpdate.getActivite());
+
+        cahierTuteurRepository.save(cahierTuteurToUpdate);
+        return cahierTuteurToUpdate;
     }
 
     @Override

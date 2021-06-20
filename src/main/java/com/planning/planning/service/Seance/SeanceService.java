@@ -24,9 +24,22 @@ public class SeanceService implements ISeanceService {
 
     @Override
     public Seance updateSeance(Seance seanceToUpdate, Seance seance) {
-        // TODO add edit subMethods
-        seanceRepository.save(seance);
-        return seance;
+        seanceToUpdate.setSujet(seance.getSujet() != null ? seance.getSujet() : seanceToUpdate.getSujet());
+        seanceToUpdate.setObjectif(seance.getObjectif() != null ? seance.getObjectif() : seanceToUpdate.getObjectif());
+        seanceToUpdate.setAller(seance.getAller() != null ? seance.getAller() : seanceToUpdate.getAller());
+        seanceToUpdate.setRetour(seance.getRetour() != null ? seance.getRetour() : seanceToUpdate.getRetour());
+        seanceToUpdate.setStartTimeRetour(seance.getStartTimeRetour()  != null ? seance.getStartTimeRetour() : seanceToUpdate.getStartTimeRetour());
+        seanceToUpdate.setEndTimeRetour(seance.getEndTimeRetour()  != null ? seance.getEndTimeRetour() : seanceToUpdate.getEndTimeRetour());
+        seanceToUpdate.setDate(seance.getDate()  != null ? seance.getDate() : seanceToUpdate.getDate());
+        seanceToUpdate.setCreneau(seance.getCreneau()  != null ? seance.getCreneau() : seanceToUpdate.getCreneau());
+       // seanceToUpdate.setPhases(seance.getPhases()  != null ? seance.getPhases() : seanceToUpdate.getPhases());
+        seanceToUpdate.setPlanning(seance.getPlanning()  != null ? seance.getPlanning() : seanceToUpdate.getPlanning());
+
+        if (seance.getPhases() != null) {
+            seanceToUpdate.setPhases(seance.getPhases());
+        }
+        seanceRepository.save(seanceToUpdate);
+        return seanceToUpdate;
     }
 
     @Override

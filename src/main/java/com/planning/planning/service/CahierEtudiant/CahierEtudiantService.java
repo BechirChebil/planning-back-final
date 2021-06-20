@@ -26,8 +26,11 @@ public class CahierEtudiantService implements ICahierEtudiantService {
 
     @Override
     public CahierEtudiant updateCahierEtudiant(CahierEtudiant cahierEtudiantToUpdate, CahierEtudiant cahierEtudiant) {
-        cahierEtudiantRepository.save(cahierEtudiant);
-        return cahierEtudiant;
+        cahierEtudiantToUpdate.setPlanning(cahierEtudiant.getPlanning() != null ? cahierEtudiant.getPlanning() : cahierEtudiantToUpdate.getPlanning());
+        cahierEtudiantToUpdate.setActivite(cahierEtudiant.getActivite() != null ? cahierEtudiant.getActivite() : cahierEtudiantToUpdate.getActivite());
+
+        cahierEtudiantRepository.save(cahierEtudiantToUpdate);
+        return cahierEtudiantToUpdate;
     }
 
     @Override
