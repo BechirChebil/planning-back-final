@@ -2,7 +2,6 @@ package com.planning.planning.service.CahierEtudiant;
 
 
 import com.planning.planning.Model.CahierEtudiant;
-import com.planning.planning.repositories.Activite.IActiviteRepository;
 import com.planning.planning.repositories.CahierEtudiant.ICahierEtudiantRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +25,12 @@ public class CahierEtudiantService implements ICahierEtudiantService {
 
     @Override
     public CahierEtudiant updateCahierEtudiant(CahierEtudiant cahierEtudiantToUpdate, CahierEtudiant cahierEtudiant) {
-        cahierEtudiantToUpdate.setPlanning(cahierEtudiant.getPlanning() != null ? cahierEtudiant.getPlanning() : cahierEtudiantToUpdate.getPlanning());
-        cahierEtudiantToUpdate.setActivite(cahierEtudiant.getActivite() != null ? cahierEtudiant.getActivite() : cahierEtudiantToUpdate.getActivite());
+
+        cahierEtudiantToUpdate.setIntroduction(cahierEtudiant.getIntroduction() != null ? cahierEtudiant.getIntroduction() : cahierEtudiantToUpdate.getIntroduction());
+        cahierEtudiantToUpdate.setSujet(cahierEtudiant.getSujet() != null ? cahierEtudiant.getSujet() : cahierEtudiantToUpdate.getSujet());
+        cahierEtudiantToUpdate.setIndicationEtudiant(cahierEtudiant.getIndicationEtudiant() != null ? cahierEtudiant.getIndicationEtudiant() : cahierEtudiantToUpdate.getIndicationEtudiant());
+        cahierEtudiantToUpdate.setIndicationEtudiant(cahierEtudiant.getIndicationEtudiant() != null ? cahierEtudiant.getIndicationEtudiant() : cahierEtudiantToUpdate.getIndicationEtudiant());
+        cahierEtudiantToUpdate.setPlanning(cahierEtudiant.getPlanning()  != null ? cahierEtudiant.getPlanning() : cahierEtudiantToUpdate.getPlanning());
 
         cahierEtudiantRepository.save(cahierEtudiantToUpdate);
         return cahierEtudiantToUpdate;

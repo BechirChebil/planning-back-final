@@ -25,8 +25,8 @@ public class PlanningService implements IPlanningService{
     @Override
     public Planning updatePlanning(Planning planningToUpdate, Planning planning) {
 
-        planningToUpdate.setSujet(planning.getSujet() != null ? planning.getSujet() : planningToUpdate.getSujet());
-       // planningToUpdate.setStartTime(planning.getObjectif() != null ? planning.getObjectif() : planningToUpdate.getObjectif());
+        planningToUpdate.setTitre(planning.getTitre() != null ? planning.getTitre() : planningToUpdate.getTitre());
+       // planningToUpdate.setStartTime(planning.getDiscription() != null ? planning.getDiscription() : planningToUpdate.getDiscription());
         //planningToUpdate.setRendu(planning.getRendu() != null ? planning.getRendu() : planningToUpdate.getRendu());
         planningToUpdate.setStartTime(planning.getStartTime() != null ? planning.getStartTime() : planningToUpdate.getStartTime());
         //planningToUpdate.setSeances(planning.getSeances()  != null ? planning.getSeances() : planningToUpdate.getSeances());

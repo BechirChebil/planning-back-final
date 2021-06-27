@@ -7,25 +7,30 @@ public class CahierTuteur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String resourcesTuteur;
+
     private String indicationsTuteur;
 
     @OneToOne
     //@JoinColumn(name = "id", referencedColumnName = "id")
-    private Planning planning;
+    private CahierEtudiant cahierEtudiant;
 
-    @OneToOne
-    //@JoinColumn(name = "activite_id", referencedColumnName = "id")
-    private Activite activite;
+
+
 
     public CahierTuteur() {
     }
 
-    public CahierTuteur(String resourcesTuteur, String indicationsTuteur) {
-        this.resourcesTuteur = resourcesTuteur;
+    public CahierTuteur(String indicationsTuteur) {
         this.indicationsTuteur = indicationsTuteur;
     }
 
+    public CahierEtudiant getCahierEtudiant() {
+        return cahierEtudiant;
+    }
+
+    public void setCahierEtudiant(CahierEtudiant cahierEtudiant) {
+        this.cahierEtudiant = cahierEtudiant;
+    }
 
     public Long getId() {
         return id;
@@ -35,22 +40,6 @@ public class CahierTuteur {
         this.id = id;
     }
 
-    public Planning getPlanning() {
-        return planning;
-    }
-
-    public void setPlanning(Planning planning) {
-        this.planning = planning;
-    }
-
-    public String getResourcesTuteur() {
-        return resourcesTuteur;
-    }
-
-    public void setResourcesTuteur(String resourcesTuteur) {
-        this.resourcesTuteur = resourcesTuteur;
-    }
-
     public String getIndicationsTuteur() {
         return indicationsTuteur;
     }
@@ -58,14 +47,4 @@ public class CahierTuteur {
     public void setIndicationsTuteur(String indicationsTuteur) {
         this.indicationsTuteur = indicationsTuteur;
     }
-
-    public Activite getActivite() {
-        return activite;
-    }
-
-    public void setActivite(Activite activite) {
-        this.activite = activite;
-    }
-
-
 }

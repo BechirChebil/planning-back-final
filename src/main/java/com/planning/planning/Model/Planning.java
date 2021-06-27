@@ -12,26 +12,19 @@ public class Planning {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String sujet;
+
+    private String titre;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startTime;
-
-//    @OneToMany( targetEntity=Seance.class, mappedBy="planning" )
-//    private List<Seance> seances = new ArrayList<>();
 
     @OneToMany(mappedBy="planning")
     private List<Seance> seances;
 
-//    @OneToMany(mappedBy = "planning")
-//    private List<Seance> seances;
-
-
-
     public Planning() {
     }
 
-    public Planning(String sujet, Date startTime) {
-        this.sujet = sujet;
+    public Planning(String titre, Date startTime) {
+        this.titre = titre;
         this.startTime = startTime;
     }
 
@@ -43,12 +36,12 @@ public class Planning {
         this.id = id;
     }
 
-    public String getSujet() {
-        return sujet;
+    public String getTitre() {
+        return titre;
     }
 
-    public void setSujet(String sujet) {
-        this.sujet = sujet;
+    public void setTitre(String sujet) {
+        this.titre = sujet;
     }
 
     public Date getStartTime() {

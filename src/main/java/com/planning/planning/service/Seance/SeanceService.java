@@ -24,20 +24,24 @@ public class SeanceService implements ISeanceService {
 
     @Override
     public Seance updateSeance(Seance seanceToUpdate, Seance seance) {
-        seanceToUpdate.setSujet(seance.getSujet() != null ? seance.getSujet() : seanceToUpdate.getSujet());
+
+        seanceToUpdate.setTitre(seance.getTitre() != null ? seance.getTitre() : seanceToUpdate.getTitre());
         seanceToUpdate.setObjectif(seance.getObjectif() != null ? seance.getObjectif() : seanceToUpdate.getObjectif());
-        seanceToUpdate.setAller(seance.getAller() != null ? seance.getAller() : seanceToUpdate.getAller());
-        seanceToUpdate.setRetour(seance.getRetour() != null ? seance.getRetour() : seanceToUpdate.getRetour());
-        seanceToUpdate.setStartTimeRetour(seance.getStartTimeRetour()  != null ? seance.getStartTimeRetour() : seanceToUpdate.getStartTimeRetour());
-        seanceToUpdate.setEndTimeRetour(seance.getEndTimeRetour()  != null ? seance.getEndTimeRetour() : seanceToUpdate.getEndTimeRetour());
+        seanceToUpdate.setIndicationTuteur(seance.getIndicationTuteur() != null ? seance.getIndicationTuteur() : seanceToUpdate.getIndicationTuteur());
+        seanceToUpdate.setIndicationEtudiant(seance.getIndicationEtudiant() != null ? seance.getIndicationEtudiant() : seanceToUpdate.getIndicationEtudiant());
         seanceToUpdate.setDate(seance.getDate()  != null ? seance.getDate() : seanceToUpdate.getDate());
         seanceToUpdate.setCreneau(seance.getCreneau()  != null ? seance.getCreneau() : seanceToUpdate.getCreneau());
-       // seanceToUpdate.setPhases(seance.getPhases()  != null ? seance.getPhases() : seanceToUpdate.getPhases());
+
+        seanceToUpdate.setPhases(seance.getPhases()  != null ? seance.getPhases() : seanceToUpdate.getPhases());
         seanceToUpdate.setPlanning(seance.getPlanning()  != null ? seance.getPlanning() : seanceToUpdate.getPlanning());
 
-        if (seance.getPhases() != null) {
+
+       /* if (seance.getPhases() != null) {
             seanceToUpdate.setPhases(seance.getPhases());
-        }
+        }*/
+
+
+
         seanceRepository.save(seanceToUpdate);
         return seanceToUpdate;
     }

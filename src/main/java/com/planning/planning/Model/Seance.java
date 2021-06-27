@@ -4,64 +4,49 @@ package com.planning.planning.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Seance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String sujet;
+
+    private String titre;
     private String objectif;
-
-    private String aller;
-    private String retour;
-
-    @JsonFormat(pattern="HH:mm")
-    private Date startTimeRetour;
-    @JsonFormat(pattern="HH:mm")
-    private Date endTimeRetour;
+    private String creneau;
 
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
 
-    private String creneau;
-
+    private String indicationTuteur;
+    private String indicationEtudiant;
 
     @OneToMany(mappedBy="seance")
     private List<Phase> phases;
 
-//    @OneToMany(mappedBy = "seance")
-//    private Set<Phase> phases;
-
-
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="planning_id")//, referencedColumnName="id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Planning planning;
-
-//    @ManyToOne
-//    @JoinColumn(nullable = true)
-//    @JsonIgnore
-//    private Planning planning;
 
     public Seance() {
     }
 
+    public Seance(String titre, String objectif,String indicationTuteur,
+                   String indicationEtudiant, Date date, String creneau )
+    {
 
-
-    public Seance(String sujet, String objectif,
-                  String aller, String retour, Date startTimeRetour, Date endTimeRetour,
-                  Date date, String creneau) {
-        this.sujet = sujet;
+        this.titre = titre;
         this.objectif = objectif;
-        this.aller = aller;
-        this.retour = retour;
-        this.startTimeRetour = startTimeRetour;
-        this.endTimeRetour = endTimeRetour;
+        this.indicationTuteur = indicationTuteur;
+        this.indicationEtudiant = indicationEtudiant;
         this.date = date;
         this.creneau = creneau;
     }
@@ -90,12 +75,12 @@ public class Seance {
         this.id = id;
     }
 
-    public String getSujet() {
-        return sujet;
+    public String getTitre() {
+        return titre;
     }
 
-    public void setSujet(String sujet) {
-        this.sujet = sujet;
+    public void setTitre(String sujet) {
+        this.titre = sujet;
     }
 
     public String getObjectif() {
@@ -106,12 +91,12 @@ public class Seance {
         this.objectif = objectif;
     }
 
-    public String getAller() {
-        return aller;
+    public String getIndicationTuteur() {
+        return indicationTuteur;
     }
 
-    public void setAller(String aller) {
-        this.aller = aller;
+    public void setIndicationTuteur(String aller) {
+        this.indicationTuteur = aller;
     }
 
     public Date getDate() {
@@ -130,36 +115,13 @@ public class Seance {
         this.creneau = creneau;
     }
 
-
-    public Planning getPlannig() {
-        return planning;
+    public String getIndicationEtudiant() {
+        return indicationEtudiant;
     }
 
-    public void setPlannig(Planning planning) {
-        this.planning = planning;
+    public void setIndicationEtudiant(String retour) {
+        this.indicationEtudiant = retour;
     }
 
-    public String getRetour() {
-        return retour;
-    }
 
-    public void setRetour(String retour) {
-        this.retour = retour;
-    }
-
-    public Date getStartTimeRetour() {
-        return startTimeRetour;
-    }
-
-    public void setStartTimeRetour(Date startTimeRetour) {
-        this.startTimeRetour = startTimeRetour;
-    }
-
-    public Date getEndTimeRetour() {
-        return endTimeRetour;
-    }
-
-    public void setEndTimeRetour(Date endTimeRetour) {
-        this.endTimeRetour = endTimeRetour;
-    }
 }

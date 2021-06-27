@@ -2,6 +2,8 @@ package com.planning.planning.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,16 +16,18 @@ public class Phase {
     private Long id;
 
     private String titre;
-    private String objectif;
     private String rendu;
+    private String discription;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern="HH:mm")
     private Date startTime;
     @JsonFormat(pattern="HH:mm")
     private Date endTime;
 
-    @ManyToOne
     @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="seance_id",referencedColumnName="id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Seance seance;
 
 //    @ManyToOne
@@ -34,13 +38,15 @@ public class Phase {
     public Phase() {
     }
 
-    public Phase(String titre, String objectif, String rendu, Date startTime, Date endTime) {
+    public Phase(String titre, String rendu, String discription, Date startTime, Date endTime) {
         this.titre = titre;
-        this.objectif = objectif;
         this.rendu = rendu;
+        this.discription = discription;
         this.startTime = startTime;
         this.endTime = endTime;
+
     }
+
 
     public Long getId() {
         return id;
@@ -58,12 +64,12 @@ public class Phase {
         this.titre = titre;
     }
 
-    public String getObjectif() {
-        return objectif;
+    public String getDiscription() {
+        return discription;
     }
 
-    public void setObjectif(String objectif) {
-        this.objectif = objectif;
+    public void setDiscription(String discription) {
+        this.discription = discription;
     }
 
     public String getRendu() {

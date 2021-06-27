@@ -25,7 +25,7 @@ public class PhaseService implements IPhaseService {
     @Override
     public Phase updatePhase(Phase phaseToUpdate, Phase phase) {
         phaseToUpdate.setTitre(phase.getTitre() != null ? phase.getTitre() : phaseToUpdate.getTitre());
-        phaseToUpdate.setObjectif(phase.getObjectif() != null ? phase.getObjectif() : phaseToUpdate.getObjectif());
+        phaseToUpdate.setDiscription(phase.getDiscription() != null ? phase.getDiscription() : phaseToUpdate.getDiscription());
         phaseToUpdate.setRendu(phase.getRendu() != null ? phase.getRendu() : phaseToUpdate.getRendu());
         phaseToUpdate.setStartTime(phase.getStartTime() != null ? phase.getStartTime() : phaseToUpdate.getStartTime());
         phaseToUpdate.setEndTime(phase.getEndTime()  != null ? phase.getEndTime() : phaseToUpdate.getEndTime());
