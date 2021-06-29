@@ -28,8 +28,9 @@ public class PhaseController {
     }
 
     @PostMapping("/phase")
-    public ResponseEntity<?> addPhase(@RequestBody Phase phase) {
-        return new ResponseEntity<>(phaseService.addPhase(phase), HttpStatus.CREATED);
+    public ResponseEntity<Phase> addPhase(@RequestBody Phase phase) {
+        phase=phaseService.addPhase(phase);
+        return new ResponseEntity<>(phase, HttpStatus.CREATED);
     }
 
     @PutMapping("/phase/{id}")

@@ -1,6 +1,8 @@
 package com.planning.planning.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,16 +19,24 @@ public class Planning {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startTime;
 
+    @JsonIgnore
     @OneToMany(mappedBy="planning")
     private List<Seance> seances;
 
     public Planning() {
     }
 
-    public Planning(String titre, Date startTime) {
+    public Planning(Long id, String titre, Date startTime, List<Seance> seances) {
+        this.id = id;
         this.titre = titre;
         this.startTime = startTime;
+        this.seances = seances;
     }
+
+//    public Planning(String titre, Date startTime) {
+//        this.titre = titre;
+//        this.startTime = startTime;
+//    }
 
     public Long getId() {
         return id;

@@ -18,9 +18,10 @@ public class PhaseService implements IPhaseService {
 
     @Override
     public Phase addPhase(Phase phase) {
-        IPhaseRepository.save(phase);
-        return phase;
+        return IPhaseRepository.save(phase);
+
     }
+
 
     @Override
     public Phase updatePhase(Phase phaseToUpdate, Phase phase) {

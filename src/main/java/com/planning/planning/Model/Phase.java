@@ -2,6 +2,8 @@ package com.planning.planning.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -24,12 +26,23 @@ public class Phase {
     @JsonFormat(pattern="HH:mm")
     private Date endTime;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="seance_id",referencedColumnName="id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Seance seance;
+//    //@JsonIgnore
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name="seance_id",referencedColumnName="id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
 
+    //@JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="seance_id")//, referencedColumnName="id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Seance seance;
+//    @ManyToOne
+//    @JsonProperty("id")
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @JoinColumn(name="seance_id",nullable = false,referencedColumnName="id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
 //    @ManyToOne
 //    @JoinColumn(nullable = true)
 //    @JsonIgnore
@@ -38,15 +51,25 @@ public class Phase {
     public Phase() {
     }
 
-    public Phase(String titre, String rendu, String discription, Date startTime, Date endTime) {
+//    public Phase(String titre, String rendu, String discription, Date startTime, Date endTime) {
+//        this.titre = titre;
+//        this.rendu = rendu;
+//        this.discription = discription;
+//        this.startTime = startTime;
+//        this.endTime = endTime;
+//
+//    }
+
+
+    public Phase(Long id, String titre, String rendu, String discription, Date startTime, Date endTime, Seance seance) {
+        this.id = id;
         this.titre = titre;
         this.rendu = rendu;
         this.discription = discription;
         this.startTime = startTime;
         this.endTime = endTime;
-
+        this.seance = seance;
     }
-
 
     public Long getId() {
         return id;
