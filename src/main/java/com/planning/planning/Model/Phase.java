@@ -21,9 +21,9 @@ public class Phase {
     private String rendu;
     private String discription;
 
-    @JsonFormat(pattern="HH:mm")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date startTime;
-    @JsonFormat(pattern="HH:mm")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date endTime;
 
 //    //@JsonIgnore
