@@ -1,9 +1,6 @@
 package com.planning.planning.Model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -26,27 +23,15 @@ public class Phase {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date endTime;
 
-//    //@JsonIgnore
-//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name="seance_id",referencedColumnName="id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-
-    //@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="seance_id")//, referencedColumnName="id")
+    @JsonBackReference
+    @JoinColumn(name="seance_id", referencedColumnName="id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    //@JsonIgnore//Properties({"hibernateLazyInitializer", "handler"})
+    //@JsonIgnoreProperties({"Phases"})
+    //@JsonProperty("seance")
     private Seance seance;
-//    @ManyToOne
-//    @JsonProperty("id")
-//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//    @JoinColumn(name="seance_id",nullable = false,referencedColumnName="id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @ManyToOne
-//    @JoinColumn(nullable = true)
-//    @JsonIgnore
-//    private Seance seance;
+
 
     public Phase() {
     }
@@ -59,6 +44,7 @@ public class Phase {
 //        this.endTime = endTime;
 //
 //    }
+
 
 
     public Phase(Long id, String titre, String rendu, String discription, Date startTime, Date endTime, Seance seance) {
@@ -126,4 +112,6 @@ public class Phase {
     public void setSeance(Seance seance) {
         this.seance = seance;
     }
+
+
 }

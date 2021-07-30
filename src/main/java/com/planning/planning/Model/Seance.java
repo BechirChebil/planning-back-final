@@ -2,9 +2,7 @@ package com.planning.planning.Model;
 
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -29,16 +27,24 @@ public class Seance {
     private String indicationTuteur;
     private String indicationEtudiant;
 
-    @JsonIgnore
-    @OneToMany(mappedBy="seance", cascade = CascadeType.ALL)
+    //@JsonIgnore
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonManagedReference
+    //@JsonIgnoreProperties("seance")
+    //@JsonProperty("phases")
+    @OneToMany(mappedBy="seance", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@JsonIgnoreProperties("seance")
     private Set<Phase> phases;
 
 
-    //@JsonIgnore
+
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="planning_id")//, referencedColumnName="id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    //@JsonIgnore//Properties({"hibernateLazyInitializer", "handler"})
+    //@JsonIgnoreProperties({"Seances"})
+    //@JsonProperty("planning")
     private Planning planning;
 
     public Seance() {

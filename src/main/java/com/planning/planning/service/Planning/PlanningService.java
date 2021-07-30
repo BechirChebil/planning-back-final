@@ -23,6 +23,23 @@ public class PlanningService implements IPlanningService{
     }
 
     @Override
+    public Planning exportPlanning(Planning planningToUpdate, Planning planning) {
+
+        planningToUpdate.setTitre(planning.getTitre() != null ? planning.getTitre() : planningToUpdate.getTitre());
+        // planningToUpdate.setStartTime(planning.getDiscription() != null ? planning.getDiscription() : planningToUpdate.getDiscription());
+        //planningToUpdate.setRendu(planning.getRendu() != null ? planning.getRendu() : planningToUpdate.getRendu());
+        planningToUpdate.setStartTime(planning.getStartTime() != null ? planning.getStartTime() : planningToUpdate.getStartTime());
+        //planningToUpdate.setSeances(planning.getSeances()  != null ? planning.getSeances() : planningToUpdate.getSeances());
+
+        if (planning.getSeances() != null) {
+            planningToUpdate.setSeances(planning.getSeances());
+        }
+
+        IPlanningRepository.save(planningToUpdate);
+        return planningToUpdate;
+    }
+
+    @Override
     public Planning updatePlanning(Planning planningToUpdate, Planning planning) {
 
         planningToUpdate.setTitre(planning.getTitre() != null ? planning.getTitre() : planningToUpdate.getTitre());

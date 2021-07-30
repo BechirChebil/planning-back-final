@@ -19,6 +19,15 @@ public class PlanningController {
         return new ResponseEntity<>(planningService.addPlanning(planning), HttpStatus.CREATED);
     }
 
+    @PostMapping("/planning/{id}")
+    public ResponseEntity<?> exportPlanning(@PathVariable Long id, @RequestBody Planning planning) {
+        Planning planningToUpdate = planningService.getPlanning(id);
+        if (planningToUpdate != null) {
+            return new ResponseEntity<> (planningService.exportPlanning(planningToUpdate, planning), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
     @PutMapping("/planning/{id}")
     public ResponseEntity<?> updatePlanning(@PathVariable Long id, @RequestBody Planning planning) {
         Planning planningToUpdate = planningService.getPlanning(id);

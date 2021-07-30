@@ -1,8 +1,6 @@
 package com.planning.planning.Model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,8 +17,12 @@ public class Planning {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startTime;
 
-    @JsonIgnore
+    //@JsonIgnore
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy="planning")
+    @JsonManagedReference
+    //@JsonIgnoreProperties({"phases", "planning"})
+    //@JsonProperty("Seances")
     private List<Seance> seances;
 
     public Planning() {

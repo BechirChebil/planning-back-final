@@ -7,6 +7,7 @@ import java.util.List;
 public interface IPlanningService {
 
     public Planning addPlanning(Planning planning);
+    public Planning exportPlanning(Planning planningToUpdate, Planning planning);
     public Planning updatePlanning(Planning planningToUpdate, Planning planning);
     public Planning getPlanning(Long planningId);
     public List<Planning> getPlannings();
