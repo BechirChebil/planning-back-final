@@ -2,6 +2,7 @@ package com.planning.planning.service.CahierEtudiant;
 
 
 import com.planning.planning.Model.CahierEtudiant;
+import com.planning.planning.Model.Planning;
 import com.planning.planning.repositories.CahierEtudiant.ICahierEtudiantRepository;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class CahierEtudiantService implements ICahierEtudiantService {
         cahierEtudiantToUpdate.setIntroduction(cahierEtudiant.getIntroduction() != null ? cahierEtudiant.getIntroduction() : cahierEtudiantToUpdate.getIntroduction());
         cahierEtudiantToUpdate.setSujet(cahierEtudiant.getSujet() != null ? cahierEtudiant.getSujet() : cahierEtudiantToUpdate.getSujet());
         cahierEtudiantToUpdate.setIndicationEtudiant(cahierEtudiant.getIndicationEtudiant() != null ? cahierEtudiant.getIndicationEtudiant() : cahierEtudiantToUpdate.getIndicationEtudiant());
-        cahierEtudiantToUpdate.setIndicationEtudiant(cahierEtudiant.getIndicationEtudiant() != null ? cahierEtudiant.getIndicationEtudiant() : cahierEtudiantToUpdate.getIndicationEtudiant());
+        cahierEtudiantToUpdate.setIndicationsTuteur(cahierEtudiant.getIndicationsTuteur() != null ? cahierEtudiant.getIndicationsTuteur() : cahierEtudiantToUpdate.getIndicationsTuteur());
         cahierEtudiantToUpdate.setPlanning(cahierEtudiant.getPlanning()  != null ? cahierEtudiant.getPlanning() : cahierEtudiantToUpdate.getPlanning());
 
         cahierEtudiantRepository.save(cahierEtudiantToUpdate);
@@ -46,7 +47,12 @@ public class CahierEtudiantService implements ICahierEtudiantService {
     public List<CahierEtudiant> getCahierEtudiants() {
         return (List<CahierEtudiant>) cahierEtudiantRepository.findAll();
     }
-
+    
+    @Override
+    public List<CahierEtudiant> getCahierEtudiantByPlanning(Planning planning) {
+        return (List<CahierEtudiant>) cahierEtudiantRepository.findByPlanning(planning);
+    }
+    
     @Override
     public void deleteCahierEtudiant(Long cahierEtudiantId) {
         Optional<CahierEtudiant> cahierEtudiant = cahierEtudiantRepository.findById(cahierEtudiantId);

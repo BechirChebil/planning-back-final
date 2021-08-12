@@ -1,6 +1,7 @@
 package com.planning.planning.Controller;
 
 import com.planning.planning.Model.CahierEtudiant;
+import com.planning.planning.Model.Planning;
 import com.planning.planning.service.CahierEtudiant.ICahierEtudiantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +41,12 @@ public class CahierEtudiantController {
     public ResponseEntity<?> getPlannings() {
         return new ResponseEntity<>(cahierEtudiantService.getCahierEtudiants(), HttpStatus.OK);
     }
-
+    
+    @PostMapping("/cahierEtudiantByPlanning")
+    public ResponseEntity<?> getCahierEtudiantByPlanning(@RequestBody Planning planning) {
+        return new ResponseEntity<>(cahierEtudiantService.getCahierEtudiantByPlanning(planning), HttpStatus.OK);
+    }
+    
     @DeleteMapping("/cahierEtudiant/{id}")
     public ResponseEntity<?> deletePlanning(@PathVariable Long id) {
         cahierEtudiantService.deleteCahierEtudiant(id);

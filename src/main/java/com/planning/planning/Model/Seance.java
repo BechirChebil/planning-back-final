@@ -34,7 +34,7 @@ public class Seance {
     //@JsonProperty("phases")
     @OneToMany(mappedBy="seance", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     //@JsonIgnoreProperties("seance")
-    private Set<Phase> phases;
+    private List<Phase> phases;
 
 
 
@@ -64,7 +64,7 @@ public class Seance {
 
 
     public Seance(Long id, String titre, String objectif, String creneau, Date date, String indicationTuteur,
-                  String indicationEtudiant, Set<Phase> phases, Planning planning) {
+                  String indicationEtudiant, List<Phase> phases, Planning planning) {
         this.id = id;
         this.titre = titre;
         this.objectif = objectif;
@@ -76,11 +76,11 @@ public class Seance {
         this.planning = planning;
     }
 
-    public Set<Phase> getPhases() {
+    public List<Phase> getPhases() {
         return phases;
     }
 
-    public void setPhases(Set<Phase> phases) {
+    public void setPhases(List<Phase> phases) {
         this.phases = phases;
     }
 

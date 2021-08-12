@@ -18,15 +18,21 @@ public class PlanningController {
     public ResponseEntity<?> addPlanning(@RequestBody Planning planning) {
         return new ResponseEntity<>(planningService.addPlanning(planning), HttpStatus.CREATED);
     }
-
-    @PostMapping("/planning/{id}")
-    public ResponseEntity<?> exportPlanning(@PathVariable Long id, @RequestBody Planning planning) {
-        Planning planningToUpdate = planningService.getPlanning(id);
-        if (planningToUpdate != null) {
-            return new ResponseEntity<> (planningService.exportPlanning(planningToUpdate, planning), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    
+    @PostMapping("/planning-copy/{id}")
+    public ResponseEntity<?> copyPlanning(@PathVariable Long id) {
+    	
+        return new ResponseEntity<>(planningService.copyPlanning(id), HttpStatus.CREATED);
     }
+    
+//    @PostMapping("/planning/{id}")
+//    public ResponseEntity<?> exportPlanning(@PathVariable Long id, @RequestBody Planning planning) {
+//        Planning planningToUpdate = planningService.getPlanning(id);
+//        if (planningToUpdate != null) {
+//            return new ResponseEntity<> (planningService.exportPlanning(planningToUpdate, planning), HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//    }
 
     @PutMapping("/planning/{id}")
     public ResponseEntity<?> updatePlanning(@PathVariable Long id, @RequestBody Planning planning) {

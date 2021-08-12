@@ -1,6 +1,8 @@
 package com.planning.planning.service.CahierEtudiant;
 
 import com.planning.planning.Model.CahierEtudiant;
+import com.planning.planning.Model.Planning;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,4 +15,6 @@ public interface ICahierEtudiantService {
     public CahierEtudiant getCahierEtudiant(Long cahierEtudiantId);
     public List<CahierEtudiant> getCahierEtudiants();
     public void deleteCahierEtudiant(Long cahierEtudiantId);
+    public List<CahierEtudiant> getCahierEtudiantByPlanning(Planning planning);
+
 }

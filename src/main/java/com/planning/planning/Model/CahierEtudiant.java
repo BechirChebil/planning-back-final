@@ -11,6 +11,7 @@ public class CahierEtudiant {
     private String introduction;
     private String sujet;
     private String indicationEtudiant;
+    private String indicationsTuteur;
 
     @OneToOne
     //@JoinColumn(name = "id", referencedColumnName = "id")
@@ -64,5 +65,13 @@ public class CahierEtudiant {
     public void setPlanning(Planning planning) {
         this.planning = planning;
     }
+
+	public String getIndicationsTuteur() {
+		return indicationsTuteur;
+	}
+
+	public void setIndicationsTuteur(String indicationsTuteur) {
+		this.indicationsTuteur = indicationsTuteur;
+	}
 
 }
